@@ -12,7 +12,7 @@ const { notes } = require('./Develop/db/db');
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 // Generate a unique id 
 const generateUniqueId = require('generate-unique-id');

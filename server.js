@@ -12,13 +12,13 @@ const { notes } = require('./Develop/db/db');
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('Develop/public'));
 
 // Generate a unique id 
 const generateUniqueId = require('generate-unique-id');
 
 // function to create a note
-function newNote(body, notesArray) {
+function createNewNote(body, notesArray) {
     const note = body;
     notesArray.push(note);
     fs.writeFileSync(
@@ -43,7 +43,7 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
     req.body.id = generateUniqueId({length:3});
-    const note = newNote(req.body, notes);
+    const note = createNewNote(req.body, notes);
     res.json(note);
 });
 

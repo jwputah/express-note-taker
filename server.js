@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(express.static('public'));
 
-// Generate short unique id (uuid)
-const uid = new ShortUniqueId({ length: 3 });
+// Generate a unique id 
+const generateUniqueId = require('generate-unique-id');
 
 // function to create a note
 function newNote(body, notesArray) {
@@ -42,7 +42,7 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-    req.body.uid = ShortUniqueId();
+    req.body.id = generateUniqueId();
     const note = newNote(req.body, notes);
     res.json(notes);
 });

@@ -3,7 +3,7 @@
         {
             "title": "Test Title",
             "text": "Test text",
-            "uid": "123"
+            "id": "123"
         }
     ]
 }

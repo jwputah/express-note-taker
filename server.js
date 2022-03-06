@@ -38,7 +38,7 @@ app.post('/api/notes', (req, res) => {
 // Delete note function
 app.delete('api/notes/:id', (req, res) => {
     const {id} = req.params;
-    const delNote = notes.findIndex(note => note.id == id);
+    const deleteNote = notes.findIndex(note => note.id == id);
     notes.splice(delNote, 1);
     return res.send();
 });

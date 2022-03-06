@@ -44,7 +44,7 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     req.body.id = generateUniqueId({length:3});
     const note = newNote(req.body, notes);
-    res.json(notes);
+    res.json(note);
 });
 
 app.listen(PORT, () => {

@@ -4,7 +4,7 @@ const path = require("path");
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const { notes } = require('./db/db');
+const { notes } = require('./Develop/db/db');
 // const apiRoutes = require('./Develop/public/assets/js/index.js');
 // const htmlRoutes = require('./Develop/public/index.html');
 
@@ -22,7 +22,7 @@ function newNote(body, notesArray) {
     const note = body;
     notesArray.push(note);
     fs.writeFileSync(
-        path.join(__dirname, "./db/db.json"),
+        path.join(__dirname, "./Develop/db/db.json"),
         JSON.stringify({ notes: notesArray }, null, 2)
     );
     return note;

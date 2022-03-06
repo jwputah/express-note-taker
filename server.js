@@ -4,7 +4,7 @@ const path = require("path");
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const { notes } = require('./Develop/db/db');
+const { notes } = require('./db/db');
 // const apiRoutes = require('./Develop/public/assets/js/index.js');
 // const htmlRoutes = require('./Develop/public/index.html');
 
@@ -22,7 +22,7 @@ function newNote(body, notesArray) {
     const note = body;
     notesArray.push(note);
     fs.writeFileSync(
-        path.join(__dirname, "./Develop/db/db.json"),
+        path.join(__dirname, "./db/db.json"),
         JSON.stringify({ notes: notesArray }, null, 2)
     );
     return note;
@@ -30,11 +30,11 @@ function newNote(body, notesArray) {
 
 // Api routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './Develop/public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 app.get('/api/notes', (req, res) => {

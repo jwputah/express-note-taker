@@ -30,14 +30,14 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-    req.body.id = generateUniqueId({length:3});
+    req.body.id = generateUniqueId({ length: 3 });
     const note = createNewNote(req.body, notes);
     res.json(note);
 });
 
 // Delete note function
-app.delete('api/notes/:id', (req, res) => {
-    const {id} = req.params;
+app.delete('/api/notes/:id', (req, res) => {
+    const { id } = req.params;
     const delNote = notes.findIndex(note => note.id == id);
     notes.splice(delNote, 1);
     return res.send();
